@@ -1,16 +1,53 @@
-const baseurl = "http://api.fakeshop-api.com";
+import { Product } from "../models/Product";
 
-const allProductUrl = baseurl + "/products/getAllProducts";
+const baseurl = "https://dummyjson.com";
+
+const allProductUrl = baseurl + "/products";
 
 function checkStatus(response: any) {
-  console.log(response);
+  if (response.ok) {
+    return response;
+  } else {
+    const httpErrorInfo = {
+      status: response.status,
+      statusText: response.statusText,
+      url: response.url,
+    };
+
+    console.log(`log server http error: ${JSON.stringify(httpErrorInfo)}`);
+
+    let errorMessage = traslateStatusToErrorMessage(httpErrorInfo.status);
+    throw new Error(errorMessage);
+  }
+}
+
+function traslateStatusToErrorMessage(status: number) {
+  switch (status) {
+    case 401:
+      return "Please login again.";
+    case 403:
+      return "You do not have permission to view the project(s).";
+    default:
+      return "There was an error retrieving the project(s). Please try again.";
+  }
+}
+
+function convertToProduct(data: any) {
+  return data.products.map((product: any) => new Product(product));
 }
 
 const productService = {
   getAll() {
-    return fetch("https://dummyjson.com/carts/user/5")
-      .then((res) => res.json())
-      .then(console.log);
+    return fetch(allProductUrl)
+      .then(checkStatus)
+      .then((response) => response.json())
+      .then(convertToProduct)
+      .catch((error: TypeError) => {
+        console.log("log client error", error);
+        throw new Error(
+          "There was an error retrieving the projects. Please try again."
+        );
+      });
   },
 };
 

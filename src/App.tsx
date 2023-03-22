@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import './App.scss';
+import HomePage from "./pages/homepage/HomePage";
 import Layout from "./pages/Layout";
 
 
@@ -15,7 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Layout/>}>
-            
+            <Route index element={<HomePage/>} ></Route>
           </Route>
         </Routes>
       </Router>
