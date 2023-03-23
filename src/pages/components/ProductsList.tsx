@@ -29,8 +29,8 @@ export default function ProductsList() {
       {loading && <Loader />}
 
       {!loading && (
-        <div className="products container">
-          <div className="row">
+        <div className="container">
+          <div className="row products">
             {products.map((product) => (
               <CardProduct key={product.id} product={product} />
             ))}

@@ -1,23 +1,55 @@
-import Searchbar from '../../components/Searchbar';
-import './Navbar.scss';
-import logo from "/assets/full-logo.png";
+import {
+  faCaretDown,
+  faCartShopping,
+  faRightToBracket,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, NavLink } from "react-router-dom";
+import Searchbar from "../../components/Searchbar";
+import { useAppContext } from "../../store/AppStore";
+import "./Navbar.scss";
 
 export default function Navbar() {
-    return (
-      <nav className="custom-navbar">
-        <div className="left-nav">
-          <div className="logo-img">
-            <img src="/assets/full-logo.png" alt="logo" />
-          </div>
-          <div className="categories">Categorie</div>
+  const { loginUser } = useAppContext();
+
+  return (
+    <nav className="custom-navbar">
+      <div className="left-nav">
+        <div className="logo-img">
+          <img src="/assets/full-logo.png" alt="logo" />
         </div>
-        <div className="search-bar">
-            <Searchbar/>
+        <div className="categories">
+          <span>Categorie</span>
+          <FontAwesomeIcon icon={faCaretDown} />
         </div>
-        <div className="right-nav">
-          <div className="account">Account</div>
-          <div className="cart">Carrello</div>
-        </div>
-      </nav>
-    );
+      </div>
+      <div className="search-bar">
+        <Searchbar />
+      </div>
+      <div className="right-nav">
+        {loginUser === undefined && (
+          <NavLink to={"/login"} className="login">
+            {/* <div className="login"> */}
+              <span>Login</span>
+              <FontAwesomeIcon icon={faRightToBracket} />
+            {/* </div> */}
+          </NavLink>
+        )}
+
+        {loginUser !== undefined && (
+          <>
+            <div className="account">
+              <FontAwesomeIcon icon={faUser} />
+              <span>Account</span>
+            </div>
+            <div className="cart">
+              <FontAwesomeIcon icon={faCartShopping} />
+              <span>Carrello</span>
+            </div>
+          </>
+        )}
+      </div>
+    </nav>
+  );
 }

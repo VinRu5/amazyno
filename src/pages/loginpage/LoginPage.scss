@@ -1,0 +1,59 @@
+@import "../../variables";
+
+.login-page {
+    min-height: 100vh;
+    width: 100%;
+
+    .error {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    img {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        
+    }
+
+    .login-box {
+        max-width: 25%;
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $light-grey;
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid $light-orange;
+        box-shadow: 0 0 4px 2px $light-orange;
+
+        .title {
+            text-align: center;
+            div {
+                font-size: 14px;
+                color: $text-grey;
+            }
+        }
+
+        .form-login {
+
+            input, button {
+                margin: 8px 0 ;
+            }
+
+            .amazyno-button-enable {
+                background-color: $light-orange;
+                color: $light-grey;
+            }
+
+            .amazyno-button-disable {
+                background-color: $text-grey;
+                color: $light-grey;
+            }
+        }
+
+    }
+}
