@@ -4,13 +4,7 @@ import { useAppContext } from "../../store/AppStore";
 import Loader from "../components/Loader";
 import ToastError from "../components/ToastError";
 import "./LoginPage.scss";
-import { redirect } from 'react-router-dom';
-
-
-
-// interface LoginPageProps {
-//     history : RouteComponentProps['history'];
-// }
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [username, setUsername] = useState<string>("");
@@ -21,21 +15,21 @@ export default function LoginPage() {
 
   const { setLoginUser } = useAppContext();
 
-
+  const navigate = useNavigate();
 
   const sendLogin = async (event: SyntheticEvent) => {
     event.preventDefault();
- 
+
     setLoad(true);
 
     try {
       const loginResponse = await loginService.login(username, password);
-      if(loginResponse){
+      if (loginResponse) {
         setLoginUser(loginResponse);
-        //redirect("/") TODO::: andare alla home page
+        navigate("/");
       }
-      setUsername('');
-      setPassword('');
+      setUsername("");
+      setPassword("");
     } catch (e) {
       if (e instanceof Error) {
         setError(e.message);
@@ -50,12 +44,9 @@ export default function LoginPage() {
   };
 
   const checkButton = () => {
-    console.log('check')
     if (username.length > 0 && password.length > 4) {
       setDisabledButton(false);
-       console.log("booth");
     } else {
-         console.log("disable");
       setDisabledButton(true);
     }
   };
@@ -70,11 +61,11 @@ export default function LoginPage() {
     checkButton();
   };
 
-  const getClassButton = ()=> {
+  const getClassButton = () => {
     return disabledButton
       ? "amazyno-button amazyno-button-disable"
       : "amazyno-button amazyno-button-enable";
-  }
+  };
 
   return (
     <div className="login-page">
