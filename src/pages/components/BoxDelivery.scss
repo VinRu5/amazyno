@@ -1,0 +1,39 @@
+@import '../../variables';
+
+.box-delivery {
+    border: 1px solid $grey;
+    border-radius: 8px;
+    
+
+    .free-delivery, .return-delivery {
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            color: $hard-orange;
+        }
+
+        .info {
+            margin-left: 12px;
+        
+        .title {
+            font-weight: bolder;
+
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: $text-black;
+            text-decoration: underline;
+        }
+        }
+
+
+
+    }
+
+    .free-delivery{
+        border-bottom: 1px solid $grey;
+    }
+}

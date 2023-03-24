@@ -32,13 +32,30 @@ function traslateStatusToErrorMessage(status: number) {
   }
 }
 
-function convertToProduct(data: any) {
+function convertToProducts(data: any) {
   return data.products.map((product: any) => new Product(product));
+}
+
+function convertToProduct(data: any) {
+  return new Product(data);
 }
 
 const productService = {
   getAll() {
     return fetch(allProductUrl)
+      .then(checkStatus)
+      .then((response) => response.json())
+      .then(convertToProducts)
+      .catch((error: TypeError) => {
+        console.log("log client error", error);
+        throw new Error(
+          "There was an error retrieving the projects. Please try again."
+        );
+      });
+  },
+
+  getById(id: number) {
+    return fetch(`${allProductUrl}/${id}`)
       .then(checkStatus)
       .then((response) => response.json())
       .then(convertToProduct)

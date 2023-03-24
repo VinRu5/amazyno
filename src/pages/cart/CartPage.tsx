@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Cart } from "../../models/Cart";
 import { cartService } from "../../services/cartService";
 import { useAppContext } from "../../store/AppStore";
-import "./Cart.scss";
+import "./CartPage.scss";
 import CartCard from "./CartCard";
 
 export default function CartPage() {

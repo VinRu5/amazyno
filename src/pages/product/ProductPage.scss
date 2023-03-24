@@ -1,0 +1,59 @@
+@import "../../variables";
+
+.product-container {
+    margin: 80px 60px;
+
+    .img-container {
+        width: 100%;
+        height: 500px;
+        border-radius: 12px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .img-list {
+        margin-top: 24px;
+
+        .img-mini-container {
+            width: 100%;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 12px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .info-product {
+        padding-left: 32px;
+
+        .title {
+            font-weight: bolder;
+        }
+
+        .description {
+            padding: 24px 0;
+            font-size: 18px;
+            color: $text-grey;
+        }
+
+        .spacer {
+            margin: 24px 0;
+
+            .amazyno-button {
+                background-image: $orange-gradient;
+                color: $white;
+            }
+        }
+    }
+}

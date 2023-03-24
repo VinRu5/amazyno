@@ -3,10 +3,11 @@ import {  useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import { LoginUser } from "./models/LoginUser";
-import CartPage from "./pages/cart/Cart";
+import CartPage from "./pages/cart/CartPage";
 import HomePage from "./pages/homepage/HomePage";
 import Layout from "./pages/Layout";
 import LoginPage from "./pages/loginpage/LoginPage";
+import ProductPage from "./pages/product/ProductPage";
 import { AppContext } from "./store/AppStore";
 import storageApp from "./store/StorageApp";
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />}/>
               <Route path="cart" element={<CartPage />}/>
+              <Route path="products/:id" element={<ProductPage />}/>
             </Route>
           </Routes>
         </Router>

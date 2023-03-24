@@ -1,0 +1,24 @@
+@import '../../variables';
+
+.quantity-bar {
+    background-color: $light-grey;
+    border-radius: 40px;
+    padding: 6px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $hard-orange;
+    min-width: 120px;
+    max-width: 160px;
+    font-weight: bolder;
+    font-size: 24px;
+    cursor: pointer;
+
+    .quantity {
+        padding: 0 8px;
+        font-size: 18px;
+    }
+
+   
+
+}
