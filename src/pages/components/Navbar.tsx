@@ -30,10 +30,10 @@ export default function Navbar() {
       <div className="right-nav">
         {loginUser === undefined && (
           <NavLink to={"/login"} className="login">
-            {/* <div className="login"> */}
+            
               <span>Login</span>
               <FontAwesomeIcon icon={faRightToBracket} />
-            {/* </div> */}
+          
           </NavLink>
         )}
 
@@ -43,10 +43,10 @@ export default function Navbar() {
               <FontAwesomeIcon icon={faUser} />
               <span>Account</span>
             </div>
-            <div className="cart">
+            <NavLink to={"/cart"} className="cart">
               <FontAwesomeIcon icon={faCartShopping} />
               <span>Carrello</span>
-            </div>
+            </NavLink>
           </>
         )}
       </div>

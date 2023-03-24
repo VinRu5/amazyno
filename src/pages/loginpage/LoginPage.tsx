@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import ToastError from "../components/ToastError";
 import "./LoginPage.scss";
 import { useNavigate } from "react-router-dom";
+import storageApp from "../../store/StorageApp";
 
 export default function LoginPage() {
   const [username, setUsername] = useState<string>("");
@@ -26,6 +27,7 @@ export default function LoginPage() {
       const loginResponse = await loginService.login(username, password);
       if (loginResponse) {
         setLoginUser(loginResponse);
+        storageApp.saveUser(loginResponse);
         navigate("/");
       }
       setUsername("");
